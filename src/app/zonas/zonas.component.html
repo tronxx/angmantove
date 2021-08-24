@@ -1,0 +1,62 @@
+<button mat-button color="primary" (click)="agregar()">
+    Agregar
+</button>
+<button mat-button color="primary" (click)="abrirdialogo()">
+    AbrirDialogo
+</button>
+<div id="tabla_zonas"  [hidden]="editandozona">
+<table border="1">
+   <thead>
+       <tr>
+           <th>Zona</th>
+           <th>Nombre</th>
+           <th>Acciones</th>
+       </tr>
+   </thead>
+   <tbody>
+       <tr *ngFor="let mizona of zonas" (click)="seleccionar(mizona)" >
+           <td align="right"> {{mizona.numero}} </td>
+           <td> {{mizona.zona}} </td>
+           <td> 
+               <button mat-raised-button color="primary" (click)="modificar(mizona)">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+                    Modificar
+                </button> 
+               <button mat-raised-button color="warn"  (click)="eliminar()">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+                Eliminar</button>
+           </td>
+       </tr>
+   </tbody>
+</table>
+</div>
+
+<div id="form_zona" [hidden]="!editandozona">
+    <mat-card>
+        <mat-card-title>Datos de la Zona</mat-card-title>
+        <mat-card-content>
+            <label for="numero">
+                Zona
+                <input type="text" name="numero" id="numero" 
+                [(ngModel)]= "zonaedit.numero"
+                >
+            </label>
+            <label for="zona">
+                Nombre
+                <input type="text" name="zona" id="zona"
+                [(ngModel)]= "zonaedit.zona"
+                >
+            </label>
+    
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button  color="warn"  (click)="cancelar_agregar()">Cancelar</button>
+            <button mat-raised-button  color="primary"  (click)="aceptar_agregar()">Aceptar</button>
+    
+        </mat-card-actions>
+        
+        
+    </mat-card>
+
+</div>

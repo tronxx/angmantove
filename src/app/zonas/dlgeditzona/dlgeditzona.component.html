@@ -1,0 +1,24 @@
+<div>
+    <h1 mat-dialog-title>{{ datosedit.titulo }}</h1>
+</div>
+<div mat-dialog-content>
+    <div style="display: flex;flex-direction: column; margin:1rem auto; max-width: 600px; padding: 1rem;">
+        <label for="numero">
+            Numero de Zona
+                <input id="numero" matInput [(ngModel)]="datosedit.numero" type="number" placeholder="Ingrese código de la Zona">
+        </label>
+        <label for="zona">
+            Nombre de la Zona
+                <input id="zona" matInput [(ngModel)]="datosedit.zona" type="text" placeholder="Ingrese Nombre de la Zona">
+    
+        </label>
+    </div>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="closeno()">Cancelar</button>
+  <button mat-raised-button (click)="close()" color="primary" >
+    Aceptar
+  </button>
+</div>
+
