@@ -7,21 +7,19 @@
 <table border="1">
    <thead>
        <tr>
-           <th>Zona</th>
-           <th>Nombre</th>
+           <th>Ciudad</th>
            <th>Acciones</th>
        </tr>
    </thead>
    <tbody>
-       <tr *ngFor="let mizona of zonas">
-           <td align="right"> {{mizona.numero}} </td>
-           <td> {{mizona.zona}} </td>
+       <tr *ngFor="let miciudad of ciudades">
+           <td> {{miciudad.ciudad}} </td>
            <td> 
-               <button mat-raised-button color="primary" (click)="modificar(mizona)">
+               <button mat-raised-button color="primary" (click)="modificar(miciudad)">
                     <mat-icon aria-hidden="false" aria-label="Example edit icon">edit</mat-icon>
                     Modificar
                 </button> 
-               <button mat-raised-button color="warn"  (click)="eliminar(mizona)">
+               <button mat-raised-button color="warn"  (click)="eliminar(miciudad)">
                     <mat-icon aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
                     Eliminar
                 </button>
@@ -30,3 +28,4 @@
    </tbody>
 </table>
 </div>
+

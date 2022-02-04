@@ -1,6 +1,6 @@
 [
     {
-      "urldatos":"localhost/mantove/servicios/",
+      "urldatos":"http://localhost/mantove/servicios/",
       "empresa": "Mi Empresa SA de CV",
       "rfc": "XAXX010101000",
       "direc": "Calle 67 x 60 y 62 Centro",
@@ -8,7 +8,7 @@
       "logo":""
     },
     {
-      "urldatos":"localhost://mantove/",
+      "urldatos":"localhost:80//mantove/",
       "empresa": "ElectroClub del Sureste S de RL de CV",
       "rfc": "ESU160109EX9",
       "direc": "Calle 67 x 60 y 62 Centro",

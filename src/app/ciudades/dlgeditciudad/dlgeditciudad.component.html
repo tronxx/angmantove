@@ -1,0 +1,21 @@
+<div>
+    <h1 mat-dialog-title>{{ datosedit.titulo }}</h1>
+</div>
+<div mat-dialog-content>
+    <div *ngIf = "ciudad">
+        <div style="display: flex;flex-direction: column; margin:1rem auto; max-width: 600px; padding: 1rem;">
+            <label for="ciudad">
+                Ciudad
+            </label>
+            <input id="ciudad" size="50" maxlength="50" matInput [(ngModel)]="ciudad.ciudad" type="text" placeholder="Ciudad">
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="closeno()">Cancelar</button>
+  <button mat-raised-button (click)="close()" color="primary" >
+    Aceptar
+  </button>
+</div>
+
+

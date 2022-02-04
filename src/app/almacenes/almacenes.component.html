@@ -3,25 +3,31 @@
     Agregar
 </button> 
 
-<div id="tabla_zonas">
+<div id="tabla_almacenes">
 <table border="1">
    <thead>
        <tr>
-           <th>Zona</th>
+           <th>Clave</th>
            <th>Nombre</th>
+           <th>Direccion</th>
+           <th>Ciudad</th>
+           <th>Estado</th>
            <th>Acciones</th>
        </tr>
    </thead>
    <tbody>
-       <tr *ngFor="let mizona of zonas">
-           <td align="right"> {{mizona.numero}} </td>
-           <td> {{mizona.zona}} </td>
+       <tr *ngFor="let mialmacen of almacenes" >
+           <td> {{mialmacen.clave}} </td>
+           <td> {{mialmacen.nombre}} </td>
+           <td> {{mialmacen.direccion}} </td>
+           <td> {{mialmacen.ciudad}} </td>
+           <td> {{mialmacen.estado}} </td>
            <td> 
-               <button mat-raised-button color="primary" (click)="modificar(mizona)">
+               <button mat-raised-button color="primary" (click)="modificar(mialmacen)">
                     <mat-icon aria-hidden="false" aria-label="Example edit icon">edit</mat-icon>
                     Modificar
                 </button> 
-               <button mat-raised-button color="warn"  (click)="eliminar(mizona)">
+               <button mat-raised-button color="warn"  (click)="eliminar(mialmacen)">
                     <mat-icon aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
                     Eliminar
                 </button>

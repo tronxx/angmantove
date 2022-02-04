@@ -3,113 +3,102 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConfiguracionService } from './configuracion.service'
-import { Zona } from '../models/zonas';
+import { Ciudades } from '../models/ciudades';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ZonasService {
+export class CiudadesService {
 
   url = 'http://localhost/mantove/serviciosx/';
 
   constructor(private http: HttpClient ,private configuracion: ConfiguracionService ) { 
-   this.obtenurl();
-  }
-
-  obtenurl () {
     this.url = this.configuracion.obtenurl();
-  }
-
-  buscaZonas ( params: string): Observable<Zona[]> {
-    let misparamold_z = {};
-    misparamold_z = JSON.parse(params);
-   
-    
-    var miurl = this.url + "zonas.php"
-    const headers = { 'content-type': 'text/plain'};
-    const body=JSON.stringify(misparamold_z);
-    
-    return this.http.post<Zona[]>(miurl, misparamold_z, {'headers':headers}).
-    pipe(
-      tap(_ => this.log('fetched Zonas')),
-      catchError(this.handleError<Zona[]>('Ocurrio un error en Post Zonas'))
-
-    );
-    // return this.http.post(this.url + 'usuarios/busca_usuarios.php', body,{'headers':headers});
-
-  }
-
-  agregarZona ( params: string): Observable<Zona[]> {
-    let misparamold_z = JSON.parse(params);
-    let params_z = {
-      "modo"  :"agregar_zona",
-      "numero":misparamold_z.numero,
-      "zona"  :misparamold_z.zona
-    }
-    var miurl = this.url + "zonas.php"
-    const headers = { 'content-type': 'text/plain'};
-    const body=JSON.stringify(misparamold_z);
-    
-    return this.http.post<Zona[]>(miurl, params_z, {'headers':headers}).
-    pipe(
-      tap(_ => this.log('fetched Zonas')),
-      catchError(this.handleError<Zona[]>('Ocurrio un error en Post Zonas'))
-
-    );
-    // return this.http.post(this.url + 'usuarios/busca_usuarios.php', body,{'headers':headers});
-
-  }
-
-  modificarZona ( params: string): Observable<Zona[]> {
-    let misparamold_z = JSON.parse(params);
-    let params_z = {
-      "modo"  :"modificar_zona",
-      "idzona":misparamold_z.idzona,
-      "numero":misparamold_z.numero,
-      "zona"  :misparamold_z.zona
-    }
+   }
 
    
-    
-    var miurl = this.url + "zonas.php"
+   buscaCiudades ( ): Observable<Ciudades[]> {
+    let misparamold_z = {
+      modo:"buscar_ciudades"
+    };
+
+    var miurl = this.url + "ciudades.php"
     const headers = { 'content-type': 'text/plain'};
     const body=JSON.stringify(misparamold_z);
     
-    return this.http.post<Zona[]>(miurl, params_z, {'headers':headers}).
+    return this.http.post<Ciudades[]>(miurl, misparamold_z, {'headers':headers}).
     pipe(
       tap(_ => this.log('fetched Zonas')),
-      catchError(this.handleError<Zona[]>('Ocurrio un error en Post Zonas'))
+      catchError(this.handleError<Ciudades[]>('Ocurrio un error en Post Zonas'))
 
     );
     // return this.http.post(this.url + 'usuarios/busca_usuarios.php', body,{'headers':headers});
 
   }
 
-
-  eliminarZona ( params: string): Observable<Zona[]> {
+  agregarCiudad ( params: string): Observable<Ciudades[]> {
     let misparamold_z = JSON.parse(params);
     let params_z = {
-      "modo"  :"eliminar_zona",
-      "idzona":misparamold_z.idzona,
-      "numero":misparamold_z.numero,
-      "zona"  :misparamold_z.zona
+      "modo"  :"agregar_ciudad",
+      "idCiudad":misparamold_z.idCiudad,
+      "ciudad"  :misparamold_z.ciudad
     }
-   
-    
-    var miurl = this.url + "zonas.php"
+    var miurl = this.url + "ciudades.php"
     const headers = { 'content-type': 'text/plain'};
     const body=JSON.stringify(misparamold_z);
     
-    return this.http.post<Zona[]>(miurl, params_z, {'headers':headers}).
+    return this.http.post<Ciudades[]>(miurl, params_z, {'headers':headers}).
     pipe(
       tap(_ => this.log('fetched Zonas')),
-      catchError(this.handleError<Zona[]>('Ocurrio un error en Post Zonas'))
+      catchError(this.handleError<Ciudades[]>('Ocurrio un error en Post Zonas'))
 
     );
     // return this.http.post(this.url + 'usuarios/busca_usuarios.php', body,{'headers':headers});
 
   }
 
+
+  modificarCiudad ( params: string): Observable<Ciudades[]> {
+    let misparamold_z = JSON.parse(params);
+    let params_z = {
+      "modo"  :"modificar_ciudad",
+      "idCiudad":misparamold_z.idCiudad,
+      "ciudad"  :misparamold_z.ciudad
+    }
+    var miurl = this.url + "ciudades.php"
+    const headers = { 'content-type': 'text/plain'};
+    const body=JSON.stringify(misparamold_z);
+    
+    return this.http.post<Ciudades[]>(miurl, params_z, {'headers':headers}).
+    pipe(
+      tap(_ => this.log('fetched Zonas')),
+      catchError(this.handleError<Ciudades[]>('Ocurrio un error en Post Zonas'))
+
+    );
+    // return this.http.post(this.url + 'usuarios/busca_usuarios.php', body,{'headers':headers});
+
+  }
+
+  eliminarCiudad ( params: string): Observable<Ciudades[]> {
+    let misparamold_z = JSON.parse(params);
+    let params_z = {
+      "modo"  :"eliminar_ciudad",
+      "idCiudad":misparamold_z.idCiudad,
+      "ciudad"  :misparamold_z.ciudad
+    }
+    var miurl = this.url + "ciudades.php"
+    const headers = { 'content-type': 'text/plain'};
+    const body=JSON.stringify(misparamold_z);
+    
+    return this.http.post<Ciudades[]>(miurl, params_z, {'headers':headers}).
+    pipe(
+      tap(_ => this.log('fetched Zonas')),
+      catchError(this.handleError<Ciudades[]>('Ocurrio un error en Post Zonas'))
+
+    );
+    // return this.http.post(this.url + 'usuarios/busca_usuarios.php', body,{'headers':headers});
+
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -126,7 +115,7 @@ export class ZonasService {
   }
 
   private log(message: string) {
-    console.log(`UsuariosService: ${message}`);
+    console.log(`CiudadesService: ${message}`);
   }
 
 

@@ -52,54 +52,35 @@ export class ZonasComponent implements OnInit {
       respu => {
         this.zonas = respu;
       }
-    )
+    );
+
   }
 
   agregar() {
-    // console.log("mizona:", mizona);
-    if(this.zona) {
-      this.zonaedit.zona = this.zona.zona;
-      this.zonaedit.numero = this.zona.numero;
-      this.zonaedit.idzona = this.zona.idzona;
-    }
-      const dlgedit = this.dlgEditZona.open(DlgeditzonaComponent, {
-        width: '350px',
-        data : JSON.stringify(this.zonaedit)
-      });
-      dlgedit.afterClosed().subscribe(resultado => {
+    this.zona = <Zona> {}
+    this.zona.idzona = -1;
+    const dlgedit = this.dlgEditZona.open(DlgeditzonaComponent, {
+      width: '350px',
+      data : JSON.stringify(this.zona)
+    });
+    dlgedit.afterClosed().subscribe(resultado => {
+      if(resultado) {
         console.log("resultado Edit:", resultado);
-        this.zonaedit = resultado;
-        this.aceptar_agregar();
-
-      });
-
-  }
-
-  seleccionar(mizona: Zona) {
-    this.zona = mizona;
-  }
-
-  cancelar_agregar() {
-    this.editandozona = false;
-
-  }
-
-  aceptar_agregar() {
-    let params_z = {
-      "modo2":"buscar_zonas",
-      "modo":"agregar_zona",
-      "numero":this.zonaedit.numero,
-      "zona":this.zonaedit.zona
-    }
-    this.servicioZonas.agregarZona(JSON.stringify(params_z)).subscribe(
-      respu => {
-        this.cargaZonas();
+        this.zona = resultado;
+        this.servicioZonas.agregarZona(JSON.stringify(this.zona)).subscribe(
+          respu => {
+            this.cargaZonas();
+          }
+        );
+      
       }
-    )
+
+    });
 
   }
 
-  eliminar() {
+
+  eliminar(mizona : Zona) {
     const dialogref = this.dialog.open(DialogyesnoComponent, {
       width:'350px',
       data: 'Seguro de Eliminar Esta Zona ?'
@@ -107,66 +88,33 @@ export class ZonasComponent implements OnInit {
     dialogref.afterClosed().subscribe(res => {
       console.log("Debug", res);
       if(res) {
-        let params_z = {
-          "modo2" :"eliminar_zona",
-          "modo"  :"modificar_zona",
-          "idzona":this.zonaedit.idzona,
-          "numero":this.zonaedit.numero,
-          "zona"  :this.zonaedit.zona
-        }
-        this.servicioZonas.agregarZona(JSON.stringify(params_z)).subscribe(
+        this.servicioZonas.eliminarZona(JSON.stringify(mizona)).subscribe(
           respu => {
             this.cargaZonas();
           }
         )
-    
-          
       }
     });
 
-  }
-
-  abrirdialogo() {
 
   }
 
   modificar(mizona: Zona) {
-    // console.log("mizona:", mizona);
-    this.zona = mizona;
-    if(this.zona) {
-      this.zonaedit.zona = this.zona.zona;
-      this.zonaedit.numero = this.zona.numero;
-      this.zonaedit.idzona = this.zona.idzona;
-      const dlgedit = this.dlgEditZona.open(DlgeditzonaComponent, {
-        width: '350px',
-        data : JSON.stringify(this.zonaedit)
-      });
-      dlgedit.afterClosed().subscribe(resultado => {
-        console.log("resultado Edit:", resultado);
-        this.zonaedit = resultado;
-        this.modificar_zona();
-
-      });
-
-  
-    }
-    
-  }
-
-  modificar_zona() {
-    let params_z = {
-      "modo2" :"buscar_zonas",
-      "modo"  :"modificar_zona",
-      "idzona":this.zonaedit.idzona,
-      "numero":this.zonaedit.numero,
-      "zona"  :this.zonaedit.zona
-    }
-    this.servicioZonas.agregarZona(JSON.stringify(params_z)).subscribe(
-      respu => {
-        this.cargaZonas();
+    const dlgedit = this.dlgEditZona.open(DlgeditzonaComponent, {
+      width: '350px',
+      data : JSON.stringify(mizona)
+    });
+    dlgedit.afterClosed().subscribe(resultado => {
+      console.log("resultado Edit:", resultado);
+      if(resultado) {
+        this.zona = resultado;
+        this.servicioZonas.modificarZona(JSON.stringify(this.zona)).subscribe(
+          respu => {
+            this.cargaZonas();
+          }
+        )
       }
-    )
-
+    });
   }
 
 }

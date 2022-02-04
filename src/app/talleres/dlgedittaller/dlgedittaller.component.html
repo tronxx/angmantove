@@ -1,0 +1,42 @@
+<div>
+    <h1 mat-dialog-title>{{ titulo }}</h1>
+</div>
+<div mat-dialog-content>
+    <div *ngIf = "taller">
+        <div style="display: flex;flex-direction: column; margin:1rem auto; max-width: 600px; padding: 1rem;">
+            <label for="clave">
+                Clave
+            </label>
+            <input id="clave" size="5" maxlength="4" matInput [(ngModel)]="taller.clave" type="text" placeholder="Código del Taller">
+            <label for="nombre">
+                Nombre
+            </label>
+            <input id="nombre" matInput size="35" maxlength="30" [(ngModel)]="taller.nombre" type="text" placeholder="Nombre del Taller">
+            <label for="representante">
+                Representante
+            </label>
+            <input id="representante" matInput size="75" maxlength="70"  [(ngModel)]="taller.representante" type="text" placeholder="Representante del taller">
+            <label for="direc">
+                Direccion
+            </label>
+            <input id="direc" matInput size="75" maxlength="70"  [(ngModel)]="taller.direccion" type="text" placeholder="Direccion del Taller">
+            <label for="telefonos">
+                Telefonos
+            </label>
+            <input id="telefonos" matInput size="75" maxlength="70"  [(ngModel)]="taller.telefonos" type="text" placeholder="Telefonos del taller">
+            <label for="giro">
+                Giro
+            </label>
+            <input id="giro" matInput size="75" maxlength="70"  [(ngModel)]="taller.giro" type="text" placeholder="Especialidad del Taller">
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="closeno()">Cancelar</button>
+  <button mat-raised-button (click)="close()" color="primary" >
+    Aceptar
+  </button>
+</div>
+
+
+

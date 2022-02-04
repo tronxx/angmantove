@@ -3,25 +3,33 @@
     Agregar
 </button> 
 
-<div id="tabla_zonas">
+<div id="tabla_almacenes">
 <table border="1">
    <thead>
        <tr>
-           <th>Zona</th>
+           <th>Clave</th>
            <th>Nombre</th>
+           <th>Direccion</th>
+           <th>Representante</th>
+           <th>Telefonos</th>
+           <th>Giro</th>
            <th>Acciones</th>
        </tr>
    </thead>
    <tbody>
-       <tr *ngFor="let mizona of zonas">
-           <td align="right"> {{mizona.numero}} </td>
-           <td> {{mizona.zona}} </td>
+       <tr *ngFor="let mitaller of talleres" >
+           <td> {{mitaller.clave}} </td>
+           <td> {{mitaller.nombre}} </td>
+           <td> {{mitaller.direccion}} </td>
+           <td> {{mitaller.representante}} </td>
+           <td> {{mitaller.telefonos}} </td>
+           <td> {{mitaller.giro}} </td>
            <td> 
-               <button mat-raised-button color="primary" (click)="modificar(mizona)">
+               <button mat-raised-button color="primary" (click)="modificar(mitaller)">
                     <mat-icon aria-hidden="false" aria-label="Example edit icon">edit</mat-icon>
                     Modificar
                 </button> 
-               <button mat-raised-button color="warn"  (click)="eliminar(mizona)">
+               <button mat-raised-button color="warn"  (click)="eliminar(mitaller)">
                     <mat-icon aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
                     Eliminar
                 </button>
@@ -30,3 +38,4 @@
    </tbody>
 </table>
 </div>
+

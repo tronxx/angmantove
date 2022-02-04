@@ -1,0 +1,38 @@
+<div>
+    <h1 mat-dialog-title>{{ datosedit.titulo }}</h1>
+</div>
+<div mat-dialog-content>
+    <div *ngIf = "almacen">
+        <div style="display: flex;flex-direction: column; margin:1rem auto; max-width: 600px; padding: 1rem;">
+            <label for="clave">
+                Clave
+            </label>
+            <input id="clave" size="5" maxlength="4" matInput [(ngModel)]="almacen.clave" type="text" placeholder="Código de Almacen">
+            <label for="nombre">
+                Nombre
+            </label>
+            <input id="nombre" matInput size="35" maxlength="30" [(ngModel)]="almacen.nombre" type="text" placeholder="Nombre del Almacen">
+            <label for="direc">
+                Direccion
+            </label>
+            <input id="direc" matInput size="75" maxlength="70"  [(ngModel)]="almacen.direccion" type="text" placeholder="Direccion del Almacen">
+            <label for="ciudad">
+                Ciudad
+                <select name="ciudad" id="ciudad" [(ngModel)]="almacen.ciudad">
+                    <option *ngFor="let ciudad of ciudades" value="{{ciudad.ciudad}}"
+                    (selected)="ciudad.ciudad == almacen.ciudad" > 
+                    {{ciudad.ciudad}} 
+                    </option>
+                </select>
+            </label>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="closeno()">Cancelar</button>
+  <button mat-raised-button (click)="close()" color="primary" >
+    Aceptar
+  </button>
+</div>
+
+

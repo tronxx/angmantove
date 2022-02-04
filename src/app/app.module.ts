@@ -17,13 +17,25 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { DlgeditzonaComponent } from './zonas/dlgeditzona/dlgeditzona.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AlmacenesComponent } from './almacenes/almacenes.component';
+import { DlgEditAlmacenComponent } from './almacenes/dlg-edit-almacen/dlg-edit-almacen.component';
+import { CiudadesComponent } from './ciudades/ciudades.component';
+import { DlgeditciudadComponent } from './ciudades/dlgeditciudad/dlgeditciudad.component';
+import { TalleresComponent } from './talleres/talleres.component';
+import { DlgedittallerComponent } from './talleres/dlgedittaller/dlgedittaller.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ZonasComponent,
     DialogyesnoComponent,
-    DlgeditzonaComponent
+    DlgeditzonaComponent,
+    AlmacenesComponent,
+    DlgEditAlmacenComponent,
+    CiudadesComponent,
+    DlgeditciudadComponent,
+    TalleresComponent,
+    DlgedittallerComponent
   ],
   imports: [
     BrowserModule,
